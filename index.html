@@ -1,67 +1,25 @@
-<!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Быстрая страница</title>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Медленная страница</title>
+  <style>
+    .unused1, .unused2 { color: red; font-size: 50px; }
+  </style>
+  <script>
+    function heavyCalc() {
+      for(let i = 0; i < 1000000000; i++) {}
+    }
+    heavyCalc();
+  </script>
+</head>
+<body>
+  <h1>Страница для аудита</h1>
 
-    <!-- Указаны размеры изображений для снижения CLS -->
-    <style>
-      /* Удалён неиспользуемый CSS */
-      img {
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
-      }
-      h1 {
-        font-family: Arial, sans-serif;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Страница для аудита (ИСПРАВЛЕННАЯ)</h1>
+  <img src="./images/photo1.jpg" alt="Горы">
+  <img src="./images/photo2.jpg" alt="Горы 2">
+  <img src="./images/photo3.jpg" alt="Горы 3">
 
-    <!-- Добавлены width/height и современный формат srcset -->
-    <img
-      src="./images/photo1.jpg"
-      width="600"
-      height="338"
-      alt="Фото 1"
-      loading="lazy"
-    />
-
-    <img
-      src="./images/photo2.jpg"
-      width="600"
-      height="338"
-      alt="Фото 2"
-      loading="lazy"
-    />
-
-    <img
-      src="./images/photo3.jpg"
-      width="600"
-      height="338"
-      alt="Фото 3"
-      loading="lazy"
-    />
-
-    <!-- JS вынесен в конец body, добавлен async -->
-    <script async>
-      function heavyCalc() {
-        for (let i = 0; i < 1000000000; i++) {}
-      }
-      setTimeout(() => heavyCalc(), 100);
-    </script>
-
-    <!-- Легкие библиотеки загружаются асинхронно -->
-    <script
-      async
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    ></script>
-    <script
-      async
-      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
-    ></script>
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</body>
 </html>
